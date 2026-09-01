@@ -1,5 +1,7 @@
 name: CI
+
 on: push
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -11,15 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "test step running"
+      - run: echo "running test"
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      -uses: actions/checkout@v4
-      -run: echo "running test"
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      -run: echo "deploying (only if test passes)"
+      - run: echo "deploying (only if test passes)"
