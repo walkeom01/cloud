@@ -1,11 +1,13 @@
 name: Deploy
 on:
   workflow_dispatch:
-    push:
-      branches: [ main ]
+    inputs:
+      target:
+        description: "where to deploy"
+        type: choice
+        options: [staging , production]
 jobs:
-  deploy:
+  deplopy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: echo "deployed"
+      - run: echo "deploying to ${{ inputs.target }}
