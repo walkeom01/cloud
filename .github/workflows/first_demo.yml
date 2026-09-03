@@ -1,18 +1,11 @@
-name: ci
-on: [push , pull_request]
+name: Deploy
+on:
+  workflow_dispatch:
+    push:
+      branches: [ main ]
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: echo "running test"
   deploy:
-    needs: test
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy
-        env:
-          TOKEN:  ${{ secrets.DEPLOY_TOKEN }}
-        run: echo "depoying to production"
+      - run: echo "deployed"
